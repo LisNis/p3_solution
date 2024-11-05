@@ -1,6 +1,7 @@
 package com.p3.solution.views.homepage;
 
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
@@ -69,6 +70,10 @@ public class HomeView extends Composite<VerticalLayout> {
         buttonPrimary2.getStyle().set("background-color", "green");
         buttonPrimary2.getStyle().set("color", "white");
         buttonPrimary2.setWidth("min-content");
+
+        buttonPrimary2.addClickListener(event -> {
+            UI.getCurrent().navigate("booking"); // This will navigate to the "/booking" route
+        });
 
         Button buttonSecondary = new Button("Kontakt os");
         buttonSecondary.getStyle().set("color", "green");

@@ -24,10 +24,10 @@ import static org.apache.el.lang.ELArithmetic.add;
 public class BookingView extends Composite<VerticalLayout> {
 
     public BookingView() {
-        VerticalLayout rootLayout = getContent(); // Main root layout, directly accessed via Composite
+        VerticalLayout rootLayout = getContent();
 
-        rootLayout.setWidthFull(); // Set the width of the root layout to 100%
-        rootLayout.setPadding(false); // Optional: Remove padding if you want it to look cleaner
+        rootLayout.setWidthFull();
+        rootLayout.setPadding(false);
 
         // Top navigation bar with icon on the left and links + button on the right
         HorizontalLayout topNavBar = new HorizontalLayout();

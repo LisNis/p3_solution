@@ -2,19 +2,15 @@ package com.p3.solution.views.homepage;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.component.html.Image;
 
 @PageTitle("Home")
@@ -50,11 +46,11 @@ public class HomeView extends Composite<VerticalLayout> {
 
         // Add components to the right layout
         rightLayout.add(link, link2, buttonPrimary);
-        rightLayout.setAlignItems(FlexComponent.Alignment.CENTER); // Center align links and button vertically
+        rightLayout.setAlignItems(FlexComponent.Alignment.CENTER); // Center links and button
 
         // Add both left and right layouts to the main layout
         mainLayout.add(leftLayout, rightLayout);
-        mainLayout.expand(leftLayout); // Make left layout take up all available space on the left side
+        mainLayout.expand(leftLayout);
 
         // Main content setup
         H1 h1 = new H1("Dit professionelle cykelværksted");

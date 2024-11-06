@@ -5,8 +5,6 @@ import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
@@ -17,8 +15,6 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.Composite;
 
-import static org.apache.el.lang.ELArithmetic.add;
-
 @PageTitle("Booking")
 @Route("booking")
 public class BookingView extends Composite<VerticalLayout> {
@@ -28,36 +24,6 @@ public class BookingView extends Composite<VerticalLayout> {
 
         rootLayout.setWidthFull();
         rootLayout.setPadding(false);
-
-        // Top navigation bar with icon on the left and links + button on the right
-        HorizontalLayout topNavBar = new HorizontalLayout();
-        topNavBar.setWidthFull();
-        topNavBar.setAlignItems(FlexComponent.Alignment.CENTER);
-
-        // Left section (icon)
-        HorizontalLayout leftIconLayout = new HorizontalLayout();
-        Image bikeIcon = new Image("icons/bike-icon.svg", "Bike Icon"); // Load custom bike icon
-        bikeIcon.setWidth("24px");
-        bikeIcon.setHeight("24px");
-        leftIconLayout.add(bikeIcon);
-
-        // Right section (links and button)
-        HorizontalLayout rightNavLayout = new HorizontalLayout();
-        Anchor link = new Anchor("#", "Forside");
-        Anchor link2 = new Anchor("#", "Kontakt");
-        link.getStyle().set("color", "green");
-        link2.getStyle().set("color", "green");
-        Button buttonPrimary = new Button("Book tid");
-        buttonPrimary.getStyle().set("background-color", "green").set("color", "white");
-        buttonPrimary.setWidth("min-content");
-
-        // Add links and button to the right layout
-        rightNavLayout.add(link, link2, buttonPrimary);
-        rightNavLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-
-        // Combine left and right parts in the top navigation bar
-        topNavBar.add(leftIconLayout, rightNavLayout);
-        topNavBar.expand(leftIconLayout); // Push links + button to the far right
 
         // Main content layout (Booking form and calendar)
         HorizontalLayout contentLayout = new HorizontalLayout();
@@ -122,6 +88,41 @@ public class BookingView extends Composite<VerticalLayout> {
         contentLayout.add(leftContentLayout, rightContentLayout);
 
         // Add top navigation bar and main content layout to the root layout
-        rootLayout.add(topNavBar, contentLayout);
+        rootLayout.add(contentLayout);
     }
 }
+
+
+/*
+        // Top navigation bar with icon on the left and links + button on the right
+        HorizontalLayout topNavBar = new HorizontalLayout();
+        topNavBar.setWidthFull();
+        topNavBar.setAlignItems(FlexComponent.Alignment.CENTER);
+
+        // Left section (icon)
+        HorizontalLayout leftIconLayout = new HorizontalLayout();
+        Image bikeIcon = new Image("icons/bike-icon.svg", "Bike Icon"); // Load custom bike icon
+        bikeIcon.setWidth("24px");
+        bikeIcon.setHeight("24px");
+        leftIconLayout.add(bikeIcon);
+
+        // Right section (links and button)
+        HorizontalLayout rightNavLayout = new HorizontalLayout();
+        Anchor link = new Anchor("#", "Forside");
+        Anchor link2 = new Anchor("#", "Kontakt");
+        link.getStyle().set("color", "green");
+        link2.getStyle().set("color", "green");
+        Button buttonPrimary = new Button("Book tid");
+        buttonPrimary.getStyle().set("background-color", "green").set("color", "white");
+        buttonPrimary.setWidth("min-content");
+
+        // Add links and button to the right layout
+        rightNavLayout.add(link, link2, buttonPrimary);
+        rightNavLayout.setAlignItems(FlexComponent.Alignment.CENTER);
+
+        // Combine left and right parts in the top navigation bar
+        topNavBar.add(leftIconLayout, rightNavLayout);
+        topNavBar.expand(leftIconLayout); // Push links + button to the far right
+
+
+         */

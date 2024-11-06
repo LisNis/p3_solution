@@ -3,7 +3,6 @@ package com.p3.solution.views.homepage;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
@@ -24,34 +23,6 @@ public class HomeView extends Composite<VerticalLayout> {
         HorizontalLayout mainLayout = new HorizontalLayout();
         mainLayout.setWidthFull();
         mainLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-
-        // Left section with icon
-        HorizontalLayout leftLayout = new HorizontalLayout();
-        Image bikeIcon = new Image("icons/bike-icon.svg", "Bike Icon"); // Load custom bike icon
-        bikeIcon.setWidth("24px");
-        bikeIcon.setHeight("24px");
-        leftLayout.add(bikeIcon); // Add the icon to the left layout
-
-        // Right section with links and button
-        HorizontalLayout rightLayout = new HorizontalLayout();
-        Anchor link = new Anchor("#", "Forside");
-        Anchor link2 = new Anchor("#", "Kontakt");
-        link.getStyle().set("color", "green");
-        link2.getStyle().set("color", "green");
-        Button buttonPrimary = new Button("Book tid");
-
-        // Style the button
-        buttonPrimary.getStyle().set("background-color", "green");
-        buttonPrimary.getStyle().set("color", "white");
-        buttonPrimary.setWidth("min-content");
-
-        // Add components to the right layout
-        rightLayout.add(link, link2, buttonPrimary);
-        rightLayout.setAlignItems(FlexComponent.Alignment.CENTER); // Center links and button
-
-        // Add both left and right layouts to the main layout
-        mainLayout.add(leftLayout, rightLayout);
-        mainLayout.expand(leftLayout);
 
         // Main content setup
         H1 h1 = new H1("Dit professionelle cykelværksted");
@@ -84,3 +55,36 @@ public class HomeView extends Composite<VerticalLayout> {
         layoutRow2.add(buttonPrimary2, buttonSecondary);
     }
 }
+
+
+/*
+        // Left section with icon
+        HorizontalLayout leftLayout = new HorizontalLayout();
+        Image bikeIcon = new Image("icons/bike-icon.svg", "Bike Icon"); // Load custom bike icon
+        bikeIcon.setWidth("24px");
+        bikeIcon.setHeight("24px");
+        leftLayout.add(bikeIcon); // Add the icon to the left layout
+
+        // Right section with links and button
+        HorizontalLayout rightLayout = new HorizontalLayout();
+        Anchor link = new Anchor("#", "Forside");
+        Anchor link2 = new Anchor("#", "Kontakt");
+        link.getStyle().set("color", "green");
+        link2.getStyle().set("color", "green");
+        Button buttonPrimary = new Button("Book tid");
+
+        // Style the button
+        buttonPrimary.getStyle().set("background-color", "green");
+        buttonPrimary.getStyle().set("color", "white");
+        buttonPrimary.setWidth("min-content");
+
+        // Add components to the right layout
+        rightLayout.add(link, link2, buttonPrimary);
+        rightLayout.setAlignItems(FlexComponent.Alignment.CENTER); // Center links and button
+
+        // Add both left and right layouts to the main layout
+        mainLayout.add(leftLayout, rightLayout);
+        mainLayout.expand(leftLayout);
+
+
+         */

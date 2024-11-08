@@ -1,20 +1,64 @@
 package com.p3.solution.views.booking;
 
+import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
-import com.vaadin.flow.component.textfield.TextArea;
-import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.Composite;
+import org.springframework.beans.factory.annotation.Autowired;
 
+@PageTitle("Booking")
+@Route("booking")
+public class BookingView extends Composite<VerticalLayout> {
+
+    private final BookingForm bookingForm;
+
+    @Autowired
+    public BookingView(EmailService emailService) {
+        VerticalLayout rootLayout = getContent();
+        rootLayout.setWidthFull();
+        rootLayout.setPadding(false);
+
+        // Left section (Calendar and time slots)
+        VerticalLayout leftContentLayout = new VerticalLayout();
+        leftContentLayout.setWidth("50%");
+        leftContentLayout.setSpacing(true);
+
+        // Calendar
+        H2 calendarTitle = new H2("Vælg dato for reparation:");
+        DatePicker datePicker = new DatePicker();
+        datePicker.setWidthFull();
+        datePicker.setPlaceholder("Vælg dato");
+
+        // Time slots
+        Button timeSlot1 = new Button("08.00-10.00");
+        Button timeSlot2 = new Button("12.00-14.00");
+        timeSlot1.getStyle().set("background-color", "green").set("color", "white");
+        timeSlot2.getStyle().set("background-color", "green").set("color", "white");
+
+        leftContentLayout.add(calendarTitle, datePicker, timeSlot1, timeSlot2);
+
+        // Right section with the booking form
+        bookingForm = new BookingForm(emailService);
+        bookingForm.setWidth("50%");
+
+        // Main content layout
+        HorizontalLayout contentLayout = new HorizontalLayout(leftContentLayout, bookingForm);
+        contentLayout.setWidthFull();
+        rootLayout.add(contentLayout);
+    }
+}
+
+
+
+
+
+
+/*
 @PageTitle("Booking")
 @Route("booking")
 public class BookingView extends Composite<VerticalLayout> {
@@ -91,38 +135,4 @@ public class BookingView extends Composite<VerticalLayout> {
         rootLayout.add(contentLayout);
     }
 }
-
-
-/*
-        // Top navigation bar with icon on the left and links + button on the right
-        HorizontalLayout topNavBar = new HorizontalLayout();
-        topNavBar.setWidthFull();
-        topNavBar.setAlignItems(FlexComponent.Alignment.CENTER);
-
-        // Left section (icon)
-        HorizontalLayout leftIconLayout = new HorizontalLayout();
-        Image bikeIcon = new Image("icons/bike-icon.svg", "Bike Icon"); // Load custom bike icon
-        bikeIcon.setWidth("24px");
-        bikeIcon.setHeight("24px");
-        leftIconLayout.add(bikeIcon);
-
-        // Right section (links and button)
-        HorizontalLayout rightNavLayout = new HorizontalLayout();
-        Anchor link = new Anchor("#", "Forside");
-        Anchor link2 = new Anchor("#", "Kontakt");
-        link.getStyle().set("color", "green");
-        link2.getStyle().set("color", "green");
-        Button buttonPrimary = new Button("Book tid");
-        buttonPrimary.getStyle().set("background-color", "green").set("color", "white");
-        buttonPrimary.setWidth("min-content");
-
-        // Add links and button to the right layout
-        rightNavLayout.add(link, link2, buttonPrimary);
-        rightNavLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-
-        // Combine left and right parts in the top navigation bar
-        topNavBar.add(leftIconLayout, rightNavLayout);
-        topNavBar.expand(leftIconLayout); // Push links + button to the far right
-
-
          */
